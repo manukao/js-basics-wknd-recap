@@ -95,3 +95,42 @@ import { name as firstName, age as yearsSinceBorn } from "./my-module.js";
 - example .splice() -> modifies and original array vs .slice() -> creates a new array
 
 ---
+
+#### Some structuring examples:
+
+- including composition of advanced components
+
+```javascript
+// a button component
+export function Button(props) {
+  const button = document.createElement("button");
+  button.classList.add("button");
+  button.textContent = props.text;
+  return button;
+}
+
+//An advanced use case are components that call other components (composition):
+import { Button } from "../Button/Button.js";
+
+export function ButtonGroup(props) {
+  const buttonGroup = document.createElement("div");
+  buttonGroup.classList.add("button-group");
+  for (const buttonProps of props.buttons) {
+    const button = Button(buttonProps);
+    buttonGroup.append(button);
+  }
+  return buttonGroup;
+}
+
+// Here is how these components could be used in another file:
+import { ButtonGroup } from "./ButtonGroup/ButtonGroup.js";
+import { Button } from "./Button/Button.js";
+
+const myButtonGroup = ButtonGroup({
+  buttons: [{ text: "Button 1" }, { text: "Button 2" }, { text: "Button 3" }],
+});
+document.body.append(myButtonGroup);
+
+const myButton = Button({ text: "Button" });
+document.body.append(myButton);
+```
