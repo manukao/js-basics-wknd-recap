@@ -1,0 +1,14 @@
+main {
+  color: yellow;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pleb {
+  color: green;
+}
+
+.toggle {
+  color: red;
+}
