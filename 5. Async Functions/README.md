@@ -140,3 +140,16 @@ async function myAsyncFunction() {
 - fetch(): HTTP request, returns a Promise that resolves a Response object
 - element.animate().finished: resolves when an elements animation is complete
 - navigator.getBattery(): gets current battery leve and returns a Promise that resolve with the battery level
+
+---
+
+- Example for fetching in vanilla js:
+
+```javascript
+async function fetchData() {
+  const response = await fetch("URL");
+  const data = await response.json();
+}
+
+fetchData();
+```
